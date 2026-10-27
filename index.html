@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-GB">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8" /><!--train-voice--><script>(function(){var h=location.hash;if(/(^#|&)record(=|&|$)/.test(h)){var t=localStorage.getItem("atc-access-token")||"";var m=/(?:^#|&)t=([^&]*)/.exec(h);if(m&&m[1])t=decodeURIComponent(m[1]);location.replace("train.html"+(t?"#t="+encodeURIComponent(t):""));}})();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="icon" href="./icon-192.png" sizes="192x192" type="image/png" />
@@ -150,5 +150,18 @@ SAY: ${S.reply}`)}const cr="Mic not available, check Settings > Siri & Dictation
       </div>
     </div>
     <noscript><p style="color:#ffb020;text-align:center">JavaScript is turned off. Turn it on, or open the page in Safari.</p></noscript>
+  <script>(function(){
+var app=document.getElementById("app");if(!app)return;
+function go(){var t=localStorage.getItem("atc-access-token")||"";location.href="train.html"+(t?"#t="+encodeURIComponent(t):"");}
+function mk(cls){var b=document.createElement("button");b.type="button";b.id="train-voice-btn";b.className=cls;b.textContent="Train your AI voice";b.addEventListener("click",go);return b;}
+function place(){
+ if(document.getElementById("train-voice-btn"))return;
+ var row=app.querySelector(".bottom-row");
+ if(row){var more=row.querySelector("#more");var b=mk("ghost recall");row.insertBefore(b,more);return;}
+ var c=app.querySelector("#continue");
+ if(c&&c.parentNode){var b2=mk("ghost");b2.style.cssText="width:100%;margin-top:10px";c.parentNode.appendChild(b2);}
+}
+new MutationObserver(place).observe(app,{childList:true,subtree:true});place();
+})();</script>
   </body>
 </html>
